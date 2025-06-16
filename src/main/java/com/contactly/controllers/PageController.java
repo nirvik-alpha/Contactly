@@ -1,13 +1,30 @@
 package com.contactly.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.contactly.entites.User;
+import com.contactly.forms.UserForm;
+import com.contactly.services.UserService;
+
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
 
 
 @Controller
 public class PageController {
+
+    @Autowired  // autowired or constructor injection 
+    private UserService userService;
+
+
+
 
     @RequestMapping("/home")
     public String home(Model model){
@@ -46,10 +63,53 @@ public class PageController {
     
 
     @GetMapping("/register")
-    public String register() {
+    public String register(Model model) {
+
+        
+        UserForm userForm = new UserForm();
+        
+        model.addAttribute("userForm", userForm); // send the userForm object to model which will be used in the register view 
+
+
+
+
         return "register";
     }
     
+    // processing the register form data 
+
+    @RequestMapping(value = "/do-register" , method = RequestMethod.POST)
+    public String processRegister(@ModelAttribute UserForm userForm){
+
+        // fetch form data
+
+        // validate form data
+        
+        // save to database
+        
+        // userSerivce
+
+        //  will give a new user object
+       User user =  User.builder()
+       .name(userForm.getName())
+       .email(userForm.getEmail())
+       .password(userForm.getPassword())
+       .about(userForm.getAbout())
+       .phoneNumber(userForm.getPhoneNumber())
+       .profilePic("https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dreamstime.com%2Femployee-avatar-profile-photo-icon-vector-default-businessman-image-image280771777&psig=AOvVaw2NhVf_qwNc16EiGVN8nuwM&ust=1750181039815000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCNDygsu69o0DFQAAAAAdAAAAABAe")
+       .build();   
+
+       
+
+       User savedUser =  userService.saveUser(user);
+        System.out.println("User saved: " + savedUser);
+
+        // message show success 
+        // redirection login 
+
+
+        return "redirect:/register";
+    }
 
 
 
