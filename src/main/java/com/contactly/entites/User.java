@@ -3,6 +3,8 @@ package com.contactly.entites;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
@@ -44,7 +46,8 @@ public class User {
 
     // self  ,  google , facebook , 
 
-    private Providers provider= Providers.SELF;
+    @Enumerated(value = EnumType.STRING)
+    private Providers provider= Providers.SELF;  // will save the enum type of provider as string 
     private String providerUserId;
 
     @OneToMany(mappedBy = "user" , cascade = CascadeType.ALL , fetch = FetchType.LAZY, orphanRemoval = true )
