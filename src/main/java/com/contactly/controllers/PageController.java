@@ -3,6 +3,7 @@ package com.contactly.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,6 +14,7 @@ import com.contactly.helpers.MessageType;
 import com.contactly.services.UserService;
 
 import jakarta.servlet.http.HttpSession;
+import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -83,12 +85,16 @@ public class PageController {
     // processing the register form data 
 
     @RequestMapping(value = "/do-register" , method = RequestMethod.POST)
-    public String processRegister(@ModelAttribute UserForm userForm , HttpSession session){
+    public String processRegister(@Valid @ModelAttribute UserForm userForm ,BindingResult rBindingResult, HttpSession session){
 
         // fetch form data
 
         // validate form data
-        
+        if(rBindingResult.hasErrors()){
+             return "register"; // return to register page with error message
+        }
+
+
         // save to database
         
         // userSerivce
