@@ -5,9 +5,11 @@ import java.util.Optional;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.contactly.entites.User;
+import com.contactly.helpers.AppConstants;
 import com.contactly.helpers.ResourceNotFoundException;
 import com.contactly.repositories.UserRepo;
 import com.contactly.services.UserService;
@@ -19,6 +21,10 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepo userRepo; // to save all the methods related to user
+
+    @Autowired
+    private PasswordEncoder passwordEncoder; // to encode the password
+
 
     private Logger logger =  LoggerFactory.getLogger(this.getClass());
 
@@ -32,8 +38,15 @@ public class UserServiceImpl implements UserService{
         String userId = UUID.randomUUID().toString(); // genrate random user id
         user.setUserId(userId);
         // password encode 
-        // ser.setPassword(userId);
+        // user.setPassword(userId);
 
+        user.setPassword(passwordEncoder.encode(user.getPassword()));  // encode the password
+
+
+        // set the user role 
+
+        
+        user.setRoleList(List.of(AppConstants.ROLE_USER)); // set the default role as user
 
         return userRepo.save(user);
 
