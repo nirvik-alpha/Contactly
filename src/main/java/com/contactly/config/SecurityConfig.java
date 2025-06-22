@@ -5,8 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.Customizer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
 
 import com.contactly.services.impl.SecurityCustomUserDetailService;
 
@@ -44,7 +47,7 @@ public class SecurityConfig {
 
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public DaoAuthenticationProvider authenticationProvider(){
 
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider(); // this has all the methods through which we can authenticate user
        
@@ -55,6 +58,31 @@ public class SecurityConfig {
         // password encoder object
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
         return daoAuthenticationProvider;
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
+
+
+        // configuration
+        // urls configuration public or private 
+        
+        httpSecurity.authorizeHttpRequests(authorize ->{
+            // authorize
+            // .requestMatchers("/home").permitAll();
+
+            authorize.requestMatchers("/user/**").authenticated();
+            authorize.anyRequest().permitAll(); // all other requests are allowed
+
+        });
+
+        // default form login 
+        httpSecurity.formLogin(Customizer.withDefaults()); // this will enable form based login
+
+
+       return httpSecurity.build();  // default security filter chain
+
+
     }
 
 

@@ -30,6 +30,10 @@ public class PageController {
     private UserService userService;
 
 
+     @GetMapping("/")
+    public String index() {
+        return "redirect:/home";
+    }
 
 
     @RequestMapping("/home")
