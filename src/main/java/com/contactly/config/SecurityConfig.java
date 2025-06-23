@@ -1,5 +1,7 @@
 package com.contactly.config;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,11 +9,20 @@ import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
 import com.contactly.services.impl.SecurityCustomUserDetailService;
+
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Configuration
 
@@ -77,8 +88,49 @@ public class SecurityConfig {
         });
 
         // default form login 
-        httpSecurity.formLogin(Customizer.withDefaults()); // this will enable form based login
+        httpSecurity.formLogin(formLogin->{
 
+            formLogin.loginPage("/login");                  // custom login page isntead of spring security default login page
+            formLogin.loginProcessingUrl("/authenticate");  // custom login submit URL
+            formLogin.successForwardUrl("/user/dashboard");
+            // formLogin.failureForwardUrl("/login?error=true");
+
+            formLogin.usernameParameter("email");           // name of the input field in the login form for username
+            formLogin.passwordParameter("password");        // name of the input field in the login form for password
+            
+            // formLogin.failureHandler(new AuthenticationFailureHandler() {
+
+            //     @Override
+            //     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
+            //             AuthenticationException exception) throws IOException, ServletException {
+            //         // TODO Auto-generated method stub
+            //         throw new UnsupportedOperationException("Unimplemented method 'onAuthenticationFailure'");
+            //     }
+                
+            // });
+
+            // formLogin.successHandler(new AuthenticationSuccessHandler() {
+
+            //     @Override
+            //     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+            //             Authentication authentication) throws IOException, ServletException {
+            //         // TODO Auto-generated method stub
+            //         throw new UnsupportedOperationException("Unimplemented method 'onAuthenticationSuccess'");
+            //     }
+                
+            // });
+
+
+
+
+        }); // this will enable form based login
+
+        httpSecurity.csrf(AbstractHttpConfigurer::disable);  // disabled csrf to get the request of do-logout
+
+        httpSecurity.logout(logoutForm->{
+            logoutForm.logoutUrl("/do-logout");
+            logoutForm.logoutSuccessUrl("/login?logout=true");
+        });
 
        return httpSecurity.build();  // default security filter chain
 
