@@ -54,7 +54,8 @@ public class SecurityConfig {
     @Autowired
     private SecurityCustomUserDetailService userDetailService;
 
-
+    @Autowired
+    private OAuthAuthenticationSuccessHandler handler;
 
 
     @Bean
@@ -131,6 +132,17 @@ public class SecurityConfig {
             logoutForm.logoutUrl("/do-logout");
             logoutForm.logoutSuccessUrl("/login?logout=true");
         });
+
+
+        // oauth config
+
+        httpSecurity.oauth2Login(oauth->{
+            oauth.loginPage("/login");
+            oauth.successHandler(handler);
+
+
+        });  // all the oauth 
+
 
        return httpSecurity.build();  // default security filter chain
 
