@@ -93,7 +93,7 @@ public class SecurityConfig {
 
             formLogin.loginPage("/login");                  // custom login page isntead of spring security default login page
             formLogin.loginProcessingUrl("/authenticate");  // custom login submit URL
-            formLogin.successForwardUrl("/user/dashboard");
+            formLogin.successForwardUrl("/user/profile");
             // formLogin.failureForwardUrl("/login?error=true");
 
             formLogin.usernameParameter("email");           // name of the input field in the login form for username
