@@ -2,7 +2,11 @@ package com.contactly.services;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+
 import com.contactly.entites.Contact;
+import com.contactly.entites.User;
 
 public interface ContactService {
 
@@ -25,7 +29,7 @@ public interface ContactService {
 
     List<Contact> getByUserId(String userId);
 
-    
+    Page<Contact> getByUser(User user , int page , int size ,String sortField, String sortDirection);
 
 
 
