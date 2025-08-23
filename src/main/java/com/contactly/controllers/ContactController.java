@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.contactly.entites.Contact;
 import com.contactly.entites.User;
 import com.contactly.forms.ContactForm;
+import com.contactly.forms.ContactSearchForm;
 import com.contactly.helpers.AppConstants;
 import com.contactly.helpers.Helper;
 import com.contactly.helpers.Message;
@@ -133,9 +134,46 @@ public class ContactController {
         // model.addAttribute("pageContact", pageContact);
          model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
 
-        // model.addAttribute("contactSearchForm", new ContactSearchForm());
+         model.addAttribute("contactSearchForm", new ContactSearchForm());
 
         return "user/contacts";
     }
+
+
+    @RequestMapping("/search")
+    public  String saerchHandler(
+    @ModelAttribute ContactSearchForm contactSearchForm,
+     @RequestParam(value = "size", defaultValue = AppConstants.PAGE_SIZE + "") int size,
+     @RequestParam(value = "page", defaultValue = "0") int page,
+     @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+    @RequestParam(value = "direction", defaultValue = "asc") String direction, Model model,
+    Authentication authentication
+     ){
+
+        logger.info("searching for {} with keyword {}",  contactSearchForm.getField(), contactSearchForm.getValue());
+
+         var user = userService.getUserByEmail(Helper.getEmailOfLoggedInUser(authentication));
+          Page<Contact> pageContact = null;
+        if(contactSearchForm.getField().equalsIgnoreCase("name")){
+             pageContact = contactService.searchByName(contactSearchForm.getValue(), size, page, sortBy, direction , user);
+        }
+        else if(contactSearchForm.getField().equalsIgnoreCase("email")){
+             pageContact = contactService.searchByEmail(contactSearchForm.getValue(), size, page, sortBy, direction , user);
+        }
+        else if(contactSearchForm.getField().equalsIgnoreCase("phone")){
+             pageContact = contactService.searchByPhoneNumber(contactSearchForm.getValue(), size, page, sortBy, direction , user);
+        }
+
+        
+
+         model.addAttribute("contactSearchForm", contactSearchForm);
+
+        model.addAttribute("pageContact", pageContact);
+
+        model.addAttribute("pageSize", AppConstants.PAGE_SIZE);
+
+        return "user/search";
+    }
+
 
 }
