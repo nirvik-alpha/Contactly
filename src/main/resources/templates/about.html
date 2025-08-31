@@ -1,19 +1,195 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+  th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
 >
   <head>
-    <title>About page</title>
+    <title>About | Contactly</title>
   </head>
   <body>
-    <div id="content">
-      <h1>Welcome to about page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
-        exercitationem.
-      </p>
+    <div id="content" class="space-y-2">
+      <!-- Header -->
+      <!-- <section class="text-center">
+        <h1 class="text-4xl font-bold mb-4">About Contactly</h1>
+        <p class="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+          Contactly is built to simplify how you manage and organize your
+          connections. Whether personal or professional, it ensures you never
+          lose touch.
+        </p>
+      </section> -->
+
+      <section class="max-w-12xl mx-auto px-4 py-2">
+        <div
+          class="bg-gradient-to-r from-purple-600 via-pink-500 to-red-500 dark:text-white rounded-2xl shadow-lg p-12"
+        >
+          <h1 class="text-4xl md:text-5xl dark:text-white font-extrabold mb-4">
+            About Contactly
+          </h1>
+          <p
+            class="text-lg md:text-xl dark:text-white font-light leading-relaxed"
+          >
+            Contactly is built to simplify how you manage and organize your
+            connections. Whether personal or professional, it ensures you
+            <span class="font-semibold">never lose touch</span>.
+          </p>
+        </div>
+      </section>
+
+      <!-- Mission & Team Section 2222-->
+      <!-- Mission & Team Section -->
+      <!-- Mission & Team Section -->
+      <section
+        class="py-12 bg-gradient-to-r from-orange-100 via-amber-100 to-yellow-100 dark:bg-gray-900 rounded-2xl shadow-inner max-w-12xl mx-auto px-6"
+      >
+        <h2
+          class="text-4xl font-extrabold text-center mb-12 text-red-700 dark:text-red-400"
+        >
+          🎯 Our Mission & Team
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+          <!-- Mission Card -->
+          <div
+            class="p-8 bg-white dark:bg-gray-800 text-black dark:text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+          >
+            <div class="text-5xl mb-4">🎯</div>
+            <h3 class="text-2xl font-bold mb-3">Our Mission</h3>
+            <p class="text-lg leading-relaxed">
+              To make contact management effortless, intuitive, and accessible
+              for everyone. Stay organized and connected effortlessly with
+              Contactly.
+            </p>
+          </div>
+
+          <!-- Team Card -->
+          <div
+            class="p-8 bg-white dark:bg-gray-800 text-black dark:text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+          >
+            <div class="text-5xl mb-4">🤝</div>
+            <h3 class="text-2xl font-bold mb-3">Our Team</h3>
+            <p class="text-lg leading-relaxed">
+              A passionate team of developers, designers, and product experts
+              working together to bring you the best experience. Creativity,
+              skill, and dedication drive Contactly forward.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Core Values Section -->
+      <!-- Core Values Section -->
+      <section
+        class="py-12 bg-gradient-to-r from-cyan-100 via-blue-100 to-indigo-100 dark:bg-gray-900 rounded-2xl max-w-12xl mx-auto px-6"
+      >
+        <h2
+          class="text-3xl font-bold text-center mb-10 text-purple-800 dark:text-purple-400"
+        >
+          🌟 Our Core Values
+        </h2>
+        <div class="grid md:grid-cols-3 gap-8">
+          <!-- Simplicity -->
+          <div
+            class="p-8 bg-white text-black dark:bg-gray-800 dark:text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+          >
+            <div class="text-5xl mb-4">✨</div>
+            <h3 class="text-2xl font-bold mb-2">Simplicity</h3>
+            <p class="text-lg">
+              Keeping things simple and intuitive for all users.
+            </p>
+          </div>
+
+          <!-- Innovation -->
+          <div
+            class="p-8 bg-white text-black dark:bg-gray-800 dark:text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+          >
+            <div class="text-5xl mb-4">💡</div>
+            <h3 class="text-2xl font-bold mb-2">Innovation</h3>
+            <p class="text-lg">
+              Continuously improving with new ideas to meet evolving needs.
+            </p>
+          </div>
+
+          <!-- Trust -->
+          <div
+            class="p-8 bg-white dark:bg-gray-800 text-black dark:text-white rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+          >
+            <div class="text-5xl mb-4">🔒</div>
+            <h3 class="text-2xl font-bold mb-2">Trust</h3>
+            <p class="text-lg">
+              Protecting your data and privacy is at the heart of what we do.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Our Values -->
+
+      <!-- Why Choose Us -->
+      <!-- Why Choose Contactly Section -->
+      <section
+        class="py-12 bg-gradient-to-r from-blue-100 via-teal-100 to-green-100 dark:bg-gray-900 rounded-2xl max-w-12xl mx-auto px-6"
+      >
+        <h2
+          class="text-3xl font-bold text-center mb-10 text-blue-800 dark:text-teal-400"
+        >
+          💡 Why Choose Contactly?
+        </h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div
+            class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-black dark:text-white"
+          >
+            <h3 class="text-xl font-semibold mb-2">✨ Easy-to-use</h3>
+            <p>
+              Hassle-free interface for managing your contacts effortlessly.
+            </p>
+          </div>
+          <div
+            class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-black dark:text-white"
+          >
+            <h3 class="text-xl font-semibold mb-2">🔒 Secure & Reliable</h3>
+            <p>
+              Your data is safe with regular updates and strong privacy
+              measures.
+            </p>
+          </div>
+          <div
+            class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-black dark:text-white"
+          >
+            <h3 class="text-xl font-semibold mb-2">🌐 Cross-Platform</h3>
+            <p>Access your contacts from anywhere, anytime, on any device.</p>
+          </div>
+          <div
+            class="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-black dark:text-white"
+          >
+            <h3 class="text-xl font-semibold mb-2">⏱ Save Time</h3>
+            <p>Designed to help you stay connected and save time every day.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Future Vision Section -->
+      <section
+        class="py-12 bg-gradient-to-r from-purple-100 via-pink-100 to-yellow-100 dark:bg-gray-900 rounded-2xl max-w-12xl mx-auto px-6 text-center"
+      >
+        <h2 class="text-3xl font-bold mb-6 text-purple-800 dark:text-pink-400">
+          🚀 Our Future Vision
+        </h2>
+        <p
+          class="text-lg md:text-xl text-gray-800 dark:text-gray-300 max-w-3xl mx-auto leading-relaxed"
+        >
+          We aim to transform how people interact with their networks by
+          integrating AI-driven insights, smart reminders, and seamless
+          collaboration tools.
+          <span class="font-semibold text-purple-700 dark:text-pink-400">
+            Our vision is to be the most trusted and loved contact management
+            solution worldwide.
+          </span>
+        </p>
+      </section>
+
+      <!-- Future Vision -->
     </div>
+
     <script>
       console.log("This is the about page script");
     </script>

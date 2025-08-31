@@ -1,19 +1,138 @@
 <!DOCTYPE html>
 <html
   lang="en"
-  th:replace="~{base :: parent(~{::#content},~{::title},~{::script})}"
+  th:replace="~{base :: parent(~{::#content}, ~{::title}, ~{::script})}"
 >
   <head>
-    <title>Home page</title>
+    <title>Home | Contactly</title>
   </head>
   <body>
-    <div id="content">
-      <h1>Welcome to home page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
-        exercitationem.
-      </p>
+    <div id="content" class="space-y-10">
+      <!-- Hero Section -->
+      <section
+        class="bg-gradient-to-r from-indigo-600 to-purple-700 text-white rounded-2xl p-12 text-center shadow-lg"
+      >
+        <h1 class="text-5xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
+          Welcome to Contactly
+        </h1>
+        <p
+          class="text-xl md:text-2xl font-light leading-relaxed max-w-3xl mx-auto mb-6"
+        >
+          Smart contact manager to organize your personal and professional
+          network. Stay connected, secure, and efficient.
+        </p>
+        <a
+          href="/services"
+          class="px-8 py-3 bg-white text-indigo-700 font-semibold rounded-lg shadow-lg hover:bg-gray-200 transition duration-300"
+        >
+          Explore Features
+        </a>
+      </section>
+
+      <!-- Features Section -->
+      <section class="max-w-7xl mx-auto grid md:grid-cols-3 gap-8">
+        <!-- Manage Contacts -->
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i class="fa-solid fa-address-book text-indigo-600 text-5xl mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Manage Contacts</h3>
+          <p class="text-lg">
+            Save names, numbers, emails, addresses, and social links like
+            LinkedIn, Facebook, etc.
+          </p>
+        </div>
+
+        <!-- Update Anytime -->
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i class="fa-solid fa-pen-to-square text-green-600 text-5xl mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Update Anytime</h3>
+          <p class="text-lg">
+            Edit and keep your contacts up to date easily, including images,
+            descriptions, and addresses.
+          </p>
+        </div>
+
+        <!-- Clean List -->
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i class="fa-solid fa-trash text-red-600 text-5xl mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Clean List</h3>
+          <p class="text-lg">
+            Delete duplicates or outdated entries with a single click for a tidy
+            contact book.
+          </p>
+        </div>
+      </section>
+
+      <!-- Easy Sign-up Section -->
+      <section
+        class="max-w-5xl mx-auto bg-gradient-to-r from-blue-100 via-purple-100 to-pink-100 dark:bg-gray-900 rounded-2xl shadow-lg p-10 text-center"
+      >
+        <h2 class="text-4xl font-bold mb-6 text-blue-800 dark:text-purple-300">
+          📝 Easy Sign-up & Sign-in
+        </h2>
+        <p class="text-lg mb-6 text-gray-700 dark:text-gray-300">
+          Quickly join Contactly with Google or GitHub login and start managing
+          your contacts.
+        </p>
+        <div class="flex justify-center gap-6 text-4xl">
+          <i
+            class="fa-brands fa-google text-red-500 hover:scale-110 transform transition duration-300 cursor-pointer"
+          ></i>
+          <i
+            class="fa-brands fa-github text-gray-900 hover:scale-110 transform transition duration-300 cursor-pointer"
+          ></i>
+        </div>
+      </section>
+
+      <!-- Search & Features Section -->
+      <section class="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i
+            class="fa-solid fa-magnifying-glass text-purple-600 text-5xl mb-4"
+          ></i>
+          <h3 class="text-2xl font-bold mb-2">Smart Search</h3>
+          <p class="text-lg">
+            Find any contact instantly with lightning-fast search.
+          </p>
+        </div>
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i class="fa-solid fa-user-plus text-indigo-600 text-5xl mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Add Contacts</h3>
+          <p class="text-lg">
+            Save new contacts with full details: name, email, social links,
+            image, and description.
+          </p>
+        </div>
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i class="fa-solid fa-pen text-green-600 text-5xl mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Update Contacts</h3>
+          <p class="text-lg">
+            Edit existing contact information anytime easily and securely.
+          </p>
+        </div>
+        <div
+          class="p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transform hover:-translate-y-1 transition duration-300 text-center"
+        >
+          <i class="fa-solid fa-trash-can text-red-600 text-5xl mb-4"></i>
+          <h3 class="text-2xl font-bold mb-2">Delete Contacts</h3>
+          <p class="text-lg">
+            Remove outdated or duplicate contacts with a single click.
+          </p>
+        </div>
+      </section>
     </div>
+
     <script>
       console.log("This is the home page script");
     </script>

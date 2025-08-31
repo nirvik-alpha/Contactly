@@ -163,7 +163,9 @@
 
                       <!-- viewcontact -->
                       <!-- <button th:onclick="loadContactdata([[${c.id}]])"> -->
-                      <a> <i class="fa-solid fa-eye"></i></a>
+                      <button th:onclick="loadContactdata([[${c.id}]])">
+                        <i class="fa-solid fa-eye"></i>
+                      </button>
                       <!-- </button> -->
                     </div>
                   </td>
@@ -219,8 +221,10 @@
           </div>
         </div>
       </div>
+      <div data-th-replace="~{user/contacts_modals :: contact}"></div>
     </div>
 
+    <script data-th-src="@{'/js/contacts.js'}"></script>
     <script>
       console.log("This is the home page script");
     </script>

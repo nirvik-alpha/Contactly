@@ -7,13 +7,133 @@
     <title>Contact page</title>
   </head>
   <body>
-    <div id="content">
-      <h1>Welcome to Contact page</h1>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem,
-        exercitationem.
-      </p>
+    <div id="content" class="max-w-4xl mx-auto py-12 space-y-10">
+      <!-- Header -->
+      <section class="text-center">
+        <h1
+          class="text-4xl font-extrabold mb-4 text-purple-700 dark:text-purple-400"
+        >
+          📬 Contact Us
+        </h1>
+        <p class="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">
+          Have questions or feedback? Fill out the form below and we'll get back
+          to you as soon as possible.
+        </p>
+      </section>
+
+      <!-- Contact Form -->
+      <section class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-10">
+        <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Name -->
+          <div class="flex flex-col">
+            <label
+              class="mb-2 font-semibold text-gray-700 dark:text-gray-300"
+              for="name"
+              >Name</label
+            >
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="Your Name"
+              class="p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="flex flex-col">
+            <label
+              class="mb-2 font-semibold text-gray-700 dark:text-gray-300"
+              for="email"
+              >Email</label
+            >
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Your Email"
+              class="p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          <!-- Subject -->
+          <div class="flex flex-col md:col-span-2">
+            <label
+              class="mb-2 font-semibold text-gray-700 dark:text-gray-300"
+              for="subject"
+              >Subject</label
+            >
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              placeholder="Subject"
+              class="p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          <!-- Message -->
+          <div class="flex flex-col md:col-span-2">
+            <label
+              class="mb-2 font-semibold text-gray-700 dark:text-gray-300"
+              for="message"
+              >Message</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="6"
+              placeholder="Write your message..."
+              class="p-3 rounded-lg border border-gray-300 dark:border-gray-700 focus:outline-none focus:ring-2 focus:ring-purple-500 dark:bg-gray-700 dark:text-white"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <div class="md:col-span-2 text-center">
+            <button
+              type="submit"
+              class="px-8 py-3 bg-gradient-to-r from-purple-600 to-pink-500 dark:text-white font-semibold rounded-lg shadow-lg hover:scale-105 transform transition duration-300"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <!-- Contact Info -->
+      <section class="grid md:grid-cols-3 gap-6 text-center">
+        <div
+          class="p-6 bg-purple-100 dark:bg-gray-700 rounded-xl shadow hover:shadow-lg transition duration-300"
+        >
+          <i
+            class="fa-solid fa-phone text-3xl mb-2 text-purple-700 dark:text-white"
+          ></i>
+          <h3 class="font-bold mb-1">Phone</h3>
+          <p class="text-gray-700 dark:text-gray-300">123 234 567 890</p>
+        </div>
+        <div
+          class="p-6 bg-pink-100 dark:bg-gray-700 rounded-xl shadow hover:shadow-lg transition duration-300"
+        >
+          <i
+            class="fa-solid fa-envelope text-3xl mb-2 text-pink-700 dark:text-white"
+          ></i>
+          <h3 class="font-bold mb-1">Email</h3>
+          <p class="text-gray-700 dark:text-gray-300">support@contactly.com</p>
+        </div>
+        <div
+          class="p-6 bg-yellow-100 dark:bg-gray-700 rounded-xl shadow hover:shadow-lg transition duration-300"
+        >
+          <i
+            class="fa-solid fa-location-dot text-3xl mb-2 text-yellow-700 dark:text-white"
+          ></i>
+          <h3 class="font-bold mb-1">Address</h3>
+          <p class="text-gray-700 dark:text-gray-300">
+            Contactly Dhaka-Bangladesh
+          </p>
+        </div>
+      </section>
     </div>
+
     <script>
       console.log("This is the contact page script");
     </script>

@@ -23,6 +23,9 @@
 
           <div class="contacts_container p-5">
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+             
+              <div data-th-replace="~{message::messagebox}"></div>
+             
               <form
                 data-th-object="${contactSearchForm}"
                 data-th-action="@{'/user/contacts/search'}"
@@ -155,16 +158,28 @@
 
                         <!-- delete contact -->
                         <!-- <button th:onclick="deleteContact([[${c.id}]])"> -->
-                        <a> <i class="fa-solid w-6 h-6 fa-trash"></i></a>
+                        <!-- <a> <i class="fa-solid w-6 h-6 fa-trash"></i></a>
+                         -->
+                       
+                        <button th:onclick="deleteContact([[${c.id}]])">
+                          <i class="fa-solid w-6 h-6 fa-trash"></i>
+                        </button>
+
+                       
                         <!-- </button> -->
                         <!-- update contact -->
                         <!-- <a data-th-href="@{'/user/contacts/view/'+*{id}}"> -->
-                        <a> <i class="fa-solid w-6 h-6 fa-pen"></i></a>
-                        <!-- </a> -->
+                        <!-- <a> <i class="fa-solid w-6 h-6 fa-pen"></i></a> -->
+                      
+                         <a data-th-href="@{'/user/contacts/view/'+*{id}}">
+                          <i class="fa-solid w-6 h-6 fa-pen"></i
+                        ></a>
+                      
+                      <!-- </a> -->
 
                         <!-- viewcontact -->
                         <!-- <button th:onclick="loadContactdata([[${c.id}]])"> -->
-                        <a> <i class="fa-solid fa-eye"></i></a>
+                        <button th:onclick="loadContactdata([[${c.id}]])"> <i class="fa-solid fa-eye"></i></button>
                         <!-- </button> -->
                       </div>
                     </td>
@@ -220,9 +235,14 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
 
+        <div data-th-replace="~{user/contacts_modals :: contact}"> </div>
+      </div>
+
+      </div>
+
+    </div>
+   <script data-th-src="@{'/js/contacts.js'}"></script>
     <script>
       console.log("This is the home page script");
     </script>
